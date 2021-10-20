@@ -1,0 +1,189 @@
+@import 'src/css/variables.scss';
+@import 'src/css/mixin.scss';
+
+.loading-component-c {
+    position:fixed;
+    height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    right:0;
+    bottom:0;
+    -webkit-transform: translateZ(1px);
+    transform: translateZ(1px);
+    /*background:rgba(0,0,0,0.4);*/
+    z-index:1500;
+  .loading-box{
+    width:px2rem(200px);
+    height:px2rem(180px);
+    background:rgba(0,0,0,0.5);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -(px2rem(100px));
+    margin-left: -(px2rem(90px));
+    border-radius:5px;
+  }
+  .c-loading-text{
+   color:#1BC573;
+  }
+  .logo {
+    .logo-icon {
+      @include widthheight(100px);
+    }
+  }
+  .c-loading{
+    color:#1BC573;
+  }
+
+  h3,
+  p,
+  .la-ball-pulse {
+    margin-top: 0px;
+    margin-bottom: 0;
+  }
+
+  .la-ball-pulse {
+    @include margin(top, 20px);
+  }
+
+  h3 {
+    @include font-size(32px);
+    @include ff-pfm()
+  }
+
+  p {
+    @include font-size(24px);
+  }
+}
+
+
+
+.la-ball-pulse,
+.la-ball-pulse>div {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.la-ball-pulse {
+  display: block;
+  font-size: 0;
+  color: #1BC573;
+  margin: 0 auto;
+}
+
+.la-ball-pulse.la-dark {
+  color: #1BC573;
+}
+
+.la-ball-pulse>div {
+  display: inline-block;
+  float: none;
+  background-color: currentColor;
+  border: 0 solid currentColor;
+}
+
+.la-ball-pulse {
+  width: 54px;
+  height: 18px;
+}
+
+.la-ball-pulse>div:nth-child(1) {
+  -webkit-animation-delay: -200ms;
+  animation-delay: -200ms;
+}
+
+.la-ball-pulse>div:nth-child(2) {
+  -webkit-animation-delay: -100ms;
+  animation-delay: -100ms;
+}
+
+.la-ball-pulse>div:nth-child(3) {
+  -webkit-animation-delay: 0ms;
+  animation-delay: 0ms;
+}
+
+.la-ball-pulse>div {
+  width: 6px;
+  height: 6px;
+  margin: 4px;
+  border-radius: 100%;
+  -webkit-animation: ball-pulse 1s ease-in-out infinite;
+  animation: ball-pulse 1s ease-in-out infinite;
+}
+
+.la-ball-pulse.la-sm {
+  width: 26px;
+  height: 8px;
+}
+
+.la-ball-pulse.la-sm>div {
+  width: 4px;
+  height: 4px;
+  margin: 2px;
+}
+
+.la-ball-pulse.la-2x {
+  width: 108px;
+  height: 36px;
+}
+
+.la-ball-pulse.la-2x>div {
+  width: 20px;
+  height: 20px;
+  margin: 8px;
+}
+
+.la-ball-pulse.la-3x {
+  width: 162px;
+  height: 54px;
+}
+
+.la-ball-pulse.la-3x>div {
+  width: 30px;
+  height: 30px;
+  margin: 12px;
+}
+
+/*
+ * Animation
+ */
+@-webkit-keyframes ball-pulse {
+
+  0%,
+  60%,
+  100% {
+    opacity: 1;
+    // -webkit-transform: scale(1);
+    //         transform: scale(1);
+  }
+
+  30% {
+    opacity: .1;
+    // -webkit-transform: scale(.5);
+    //         transform: scale(.5);
+  }
+}
+
+@keyframes ball-pulse {
+
+  0%,
+  60%,
+  100% {
+    opacity: 1;
+    // -webkit-transform: scale(1);
+    //         transform: scale(1);
+  }
+
+  30% {
+    opacity: .1;
+    // -webkit-transform: scale(.01);
+    //         transform: scale(.01);
+  }
+}

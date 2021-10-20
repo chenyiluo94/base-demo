@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="https://shapp.nicaifu.com/logo360.jpg">
+    <meta name="theme-color" content="#000000" />
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#333">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--顶部状态栏背景色-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--删除默认的苹果工具栏和菜单栏-->
+    <meta name="format-detection" content="telephone=no">
+    <!--禁止识别电话号码-->
+    <meta name="format-detection" content="email=no">
+    <!--禁止识别邮箱-->
+    <meta name="renderer" content="webkit"><!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
+    <meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
+    <meta name="screen-orientation" content="portrait"><!-- UC强制全屏 -->
+    <!-- uc强制竖屏 -->
+    <meta name="full-screen" content="yes"><!-- UC强制全屏 -->
+    <meta name="x5-fullscreen" content="true"><!-- QQ强制全屏 -->
+    <!--<meta name="browsermode" content="application">-->
+    <!-- UC应用模式 -->
+    <meta name="x5-page-mode" content="app"><!-- QQ应用模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="hotcss" content="initial-dpr=1">
+    <style>
+        #root {
+            padding-top: env(safe-area-inset-top);
+            padding-right: env(safe-area-inset-right);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            /*
+        padding-top: constant(safe-area-inset-top);
+        padding-right: constant(safe-area-inset-right);
+        padding-bottom: constant(safe-area-inset-bottom);
+        padding-left: constant(safe-area-inset-left); */
+
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        html,
+        body {
+            background: #FFFFFF;
+        }
+
+        a[title="站长统计"] {
+            display: none;
+        }
+    </style>
+    <!-- vconsole  cdn -->
+    <script src="https://p5.nicaifu.com/cms/202003/c9c697590179a29fb5787e707586d25c.js"></script>
+    <script>
+        var vConsole = new VConsole();
+    </script>
+    <script src="https://s1.nicaifu.com/js-sdk/js-sdk.min.js"></script>
+    <script src="https://s1.nicaifu.com/js-sdk/viewport_v2.js"></script>
+    <script type="text/javascript">
+        // 微信jssdk
+        var weixin = window.navigator.userAgent.indexOf('MicroMessenger') !== -1;
+        if (weixin) {
+            document.writeln('<script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"' + '>' + '<' + '/' + 'script>');
+        }
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?67204e30736a473f4ceabb81fe20e15d";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1279828735&web_id=1279828735" async></script>
+    <script type="text/javascript" src="https://ss.qlink.ink/js/monitor.v4.min.js"></script>
+    <script type="text/javascript" src="//yun.tuisnake.com/h5-mami/log_seed.js" id="send_log"></script>
+    <script type="text/javascript">
+        try {
+            Xmob_Monitor_4.xmob_click();
+        } catch (error) {
+            console.log(error)
+        }
+    </script>
+
+    <title></title>
+</head>
+
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root" class="fadein"></div>
+</body>
+
+</html>

@@ -1,0 +1,414 @@
+@import "variables.scss";
+
+//-----------------------------------------------------
+// mixin scss
+// 包括常用的mixin, %, $function 及辅助的btn和背景图片icon
+// mixin，通过$include调用，样式通过拷贝的方式使用，尤其适用于传递参数
+// %，通过$extend调用，样式通过组合申明的方式使用，适用于不传参数的代码片段
+// $function，返回一个值，用于调用
+//-----------------------------------------------------
+// mixin & %
+// 既定义了mixin也定义了%，根据需求使用$include或$extend调用
+//-----------------------------------------------------
+@mixin ff-pfr {
+  font-family: "PingFangSC-Regular", "PingFang SC", Helvetica, Arial, sans-serif,
+    "Microsoft Yahei";
+}
+
+@mixin ff-pfm {
+  font-family: "PingFangSC-Medium", "PingFang SC", Helvetica, Arial, sans-serif,
+    "Microsoft Yahei";
+}
+
+@mixin ff-pfs {
+  font-family: "PingFangSC-Semibold", "PingFang SC", Helvetica, Arial,
+    sans-serif, "Microsoft Yahei";
+}
+
+@mixin ff-pfl {
+  font-family: "PingFangSC-Light", "PingFang SC", Helvetica, Arial, sans-serif,
+    "Microsoft Yahei";
+}
+
+// Center-align a block level element
+@mixin centerblock($extend: true) {
+  @if ($extend) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// clearfix
+@mixin clearfix($extend: true) {
+  @if ($extend) {
+    &:before,
+    &:after {
+      content: "";
+      display: table;
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+}
+
+// Hide only visually, but have it available for screenreaders
+// 只隐藏于视觉，屏幕浏览器可以阅读
+@mixin hidden-clip($extend: true) {
+  @if ($extend) {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+}
+
+// ellipsis
+@mixin ellipsis($extend: true) {
+  @if ($extend) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+// 只有webkit支持多行省略号
+@mixin ellipsis-lines($lines: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+// word-break
+// 用于链接地址强制换行
+@mixin word-break($extend: true) {
+  @if ($extend) {
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+}
+
+// text-center
+// 文本位置
+@mixin text-align($textPos: center) {
+  text-align: $textPos;
+}
+
+// disabled
+// 禁用样式，加!important
+@mixin disabled-nth(
+  $textColor: nth($colorDisabled, 1),
+  $bgColor: nth($colorDisabled, 2),
+  $borderColor: false
+) {
+  background-color: $bgColor !important;
+  color: $textColor !important;
+  cursor: default !important;
+  pointer-events: none !important;
+
+  @if ($borderColor) {
+    border: 1px solid nth($colorDisabled, 3);
+  }
+}
+
+// 禁用样式，加!important
+@mixin disabled($textColor, $bgColor, $borderColor: null) {
+  background-color: $bgColor !important;
+  color: $textColor !important;
+  cursor: default !important;
+  pointer-events: none !important;
+
+  @if ($borderColor) {
+    border: 1px solid $colorDisabled !important;
+  }
+}
+
+// fixed top & bottom
+@mixin fixed($pos: 0) {
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+@mixin position($pos) {
+  position: $pos;
+}
+
+// justify
+@mixin justify($extend: true) {
+  @if ($extend) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+// http://www.css3files.com/font/
+// 1 The eot fontfile. Can be omitted if you don`t want to support Internet Explorer prior to version 9 (including semicolon).
+// 2 Can also be omitted for Internet Explorer < 9. ?iefix prevents IE6 from interpreting all of the following. If the whole IE family (6 to 9) should be supported, 1 and 2 are needed.
+// 3 Can be omitted if iPad versions prior to iOS 4.2 shouldn’t be supported.
+// 4 The ttf fontfile. Necessary to support (Mobile) Safari and Opera.
+// 5 The woff fontfile for all modern browsers (best choice).
+@mixin font-face(
+  $fontFaceFamily,
+  $fontFacePath,
+  $weight: normal,
+  $style: normal
+) {
+  @font-face {
+    font-family: $fontFaceFamily;
+    font-weight: $weight;
+    font-style: $style;
+    src: url("#{$fontFacePath}.eot?iefix") format(‘eot’),
+      url("#{$fontFacePath}.svg#FontName") format(‘svg’),
+      url("#{$fontFacePath}.ttf") format("truetype"),
+      url("#{$fontFacePath}.woff") format(‘woff’);
+  }
+}
+
+@mixin radius($px) {
+  border-radius: px2rem($px);
+}
+
+@mixin radius-c($px: 8px) {
+  .radius#{rmpx($px)} {
+    @include radius($px);
+  }
+}
+
+// 宽高
+@mixin width($px, $ipt: null) {
+  width: px2rem($px) $ipt;
+}
+
+// 宽高
+@mixin width-per($px, $ipt: null) {
+  width: $px $ipt;
+}
+
+@mixin height($px, $ipt: null) {
+  height: px2rem($px) $ipt;
+}
+
+@mixin widthheight($px) {
+  @include width($px);
+  @include height($px);
+}
+
+@mixin width-height($px, $px2, $px3: null) {
+  @include width($px);
+  @include height($px2);
+
+  @if ($px3) {
+    line-height: px2rem($px3);
+  }
+}
+
+@mixin width-per-height($px, $px2) {
+  @include width-per($px);
+  @include height($px2);
+}
+
+// 单行居中
+@mixin height-line($px, $impt: null) {
+  height: px2rem($px);
+  line-height: px2rem($px) $impt;
+}
+
+// 行高
+@mixin line-height($n) {
+  line-height: px2rem($n);
+}
+
+@mixin inline-block {
+  display: inline-block;
+}
+
+// opacity
+@mixin opacity($opacity: 50) {
+  opacity: $opacity / 100;
+}
+
+@mixin vertical-text($height) {
+  height: px2rem($height);
+  line-height: px2rem($height);
+}
+
+// margin
+@mixin margin($name, $px, $impt: null) {
+  @each $n in $name {
+    margin-#{$n}: px2rem($px) $impt;
+  }
+}
+
+// mlr,(left,right),5px)
+// mr,right,5px
+@mixin margin-c($class, $name, $px) {
+  .#{$class}#{rmpx($px)} {
+    @include margin($name, $px);
+  }
+}
+
+// padding
+@mixin padding($name, $px, $impt: null) {
+  @each $n in $name {
+    padding-#{$n}: px2rem($px) $impt;
+  }
+}
+
+// plr,(left,right),5px)
+// pr,right,5px
+@mixin padding-c($class, $name, $px) {
+  .#{$class}#{rmpx($px)} {
+    @include padding($name, $px);
+  }
+}
+
+// border
+@mixin border($name, $px, $color: $color_line) {
+  @each $n in $name {
+    border-#{$n}: px2rem($px) solid $color;
+  }
+}
+
+@mixin border-a($color: $color_line) {
+  border: px2rem(2px) solid $color;
+}
+
+// plr,(left,right),5px)
+// pr,right,5px
+@mixin border-c($class, $name, $px) {
+  .#{$class}#{rmpx($px)} {
+    @include border($name, $px);
+  }
+}
+
+// font-size
+@mixin font-size($px, $f: 0, $impt: null) {
+  @if ($f==0) {
+    font-size: px2rem($px) $impt;
+  } @else {
+    font-size: ($px/2) $impt;
+  }
+}
+
+@mixin font-size-c($px) {
+  .fs#{rmpx($px)} {
+    @include font-size($px);
+  }
+}
+
+// z-index
+@mixin zindex($n) {
+  z-index: $n;
+}
+
+@mixin zindex-c($n) {
+  .z#{$n} {
+    @include zindex($n);
+  }
+}
+
+@mixin bg-color($c, $impt: null) {
+  background-color: $c $impt;
+}
+
+@mixin bg-image($url) {
+  background-image: url($url);
+}
+
+@mixin bg-repeat($repeat) {
+  background-repeat: $repeat;
+}
+
+@mixin bg-s($url) {
+  @include bg-image($url);
+  @include bg-repeat(no-repeat);
+}
+
+@mixin bg-size($x: 100%, $y: 100%) {
+  background-size: $x $y;
+}
+
+@mixin bg-reset($url) {
+  background: url($url) no-repeat;
+  background-size: 100% 100%;
+}
+
+// color
+@mixin color($c) {
+  color: $c;
+}
+
+@mixin color-c($n, $c) {
+  .c-#{$n} {
+    color: $c;
+  }
+}
+
+@mixin bg-color-c($n, $c) {
+  .c-bg-#{$n} {
+    background-color: $c;
+  }
+}
+
+.before {
+  content: "";
+  display: block;
+  @include width-per(100%);
+  transform: scaleY(0.5);
+  height: 1px;
+  @include bg-color(rgba(87, 159, 124, 0.16));
+  border: 0;
+}
+
+//字体的一个配置
+@mixin font($font-size: 14px, $font-color: "#333", $font-family: "ff-pfr") {
+  @if ($font-family== "ff-pfr") {
+    @include ff-pfr;
+  }
+  @if ($font-family== "ff-pfm") {
+    @include ff-pfr;
+  }
+  @if ($font-family== "ff-pfs") {
+    @include ff-pfr;
+  }
+  @if ($font-family== "ff-pfl") {
+    @include ff-pfr;
+  }
+  @include font-size($font-size) @include color($font-color);
+}
+
+@mixin background-color($c, $impt: null) {
+  background-color: $c $impt;
+}
+
+//标签的一个配置
+@mixin label(
+  $font-size: 14px,
+  $font-color: "#333",
+  $line-height: "40px",
+  $background-color: "#FFF",
+  $padding-left: "10px",
+  $padding-right: "10px",
+  $border-radius: "0px",
+  $border: "0"
+) {
+  display: inline-block;
+  @include font-size($font-size);
+  @include color($font-color);
+  @include line-height($line-height);
+  padding-left: px2rem($padding-left);
+  padding-right: px2rem($padding-right);
+  background: $background-color;
+  text-align: center;
+  @if ($border-radius== "0px") {
+  } @else {
+    border-radius: px2rem($border-radius);
+  }
+  @if ($border== "0") {
+  } @else {
+    border: $border;
+  }
+}

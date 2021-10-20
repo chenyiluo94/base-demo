@@ -1,0 +1,16 @@
+@import 'src/css/variables.scss';
+@import 'src/css/mixin.scss';
+.p404 {
+    .am-result {
+        .am-result-pic {
+            @include widthheight(320px);
+            @include margin(bottom, 120px)
+        }
+    }
+    & .am-result::after {
+        display: none !important;
+    }
+    .icon {
+        @include widthheight(320px)
+    }
+}

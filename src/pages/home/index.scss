@@ -1,0 +1,13 @@
+@import 'src/css/variables.scss';
+@import 'src/css/mixin.scss';
+.home-info{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    .home-button{
+        width: px2rem(200px);
+        height: px2rem(100px);
+    }
+}

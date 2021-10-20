@@ -1,0 +1,25 @@
+{
+    "presets": [
+        "react-app"
+    ],
+    "plugins": [
+        [
+            "@babel/plugin-proposal-decorators",
+            {
+                "legacy": true
+            }
+        ],
+        [
+            "import",
+            {
+                "libraryName": "antd-mobile",
+                "libraryDirectory": "es",
+                "style": "css"
+            }
+        ],
+        // ["import", {
+        //     "libraryName": "antd-mobile",
+        //     "style": true
+        // }]
+    ]
+}

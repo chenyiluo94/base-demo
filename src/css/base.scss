@@ -1,0 +1,578 @@
+/* base class */
+
+@import "variables";
+@import "mixin";
+
+// 字体 和字号
+.ff-pfr {
+  @include ff-pfr;
+}
+
+.ff-pfm {
+  @include ff-pfm;
+}
+
+.ff-pfs {
+  @include ff-pfs;
+}
+
+.ff-pfl {
+  @include ff-pfl;
+}
+
+.ff-dab {
+  font-family: "DINAlternate-Bold";
+  letter-spacing: px2rem(2px);
+}
+
+.fw-3 {
+  font-weight: 300;
+}
+
+.fw-4 {
+  font-weight: 400;
+}
+
+.fw-5 {
+  font-weight: 500;
+}
+
+.fw-b {
+  font-weight: bold;
+}
+
+.v-m {
+  vertical-align: middle;
+}
+
+.v-t {
+  vertical-align: top;
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+.ellipsis {
+  @include ellipsis;
+}
+
+.ellipsis-lines {
+  @include ellipsis-lines;
+}
+
+.word-break {
+  @include word-break;
+}
+
+// 文字对齐
+.tl {
+  @include text-align(left);
+}
+
+.tc {
+  @include text-align;
+}
+
+.tr {
+  @include text-align(right);
+}
+
+.disabled {
+  @include disabled($color_ccc, $color_666);
+}
+
+.fixed {
+  @include fixed;
+}
+
+.pos-r {
+  @include position(relative);
+}
+
+.pos-a {
+  @include position(absolute);
+}
+
+.pos-f {
+  @include position(fixed);
+}
+
+.hide {
+  display: none !important;
+}
+
+.ib {
+  @include inline-block;
+}
+
+.justify {
+  @include justify;
+}
+
+.opacity20 {
+  @include opacity(20);
+}
+
+.opacity30 {
+  @include opacity(30);
+}
+
+.opacity40 {
+  @include opacity(40);
+}
+
+.opacity50 {
+  @include opacity();
+}
+
+.opacity60 {
+  @include opacity(60);
+}
+
+.opacity70 {
+  @include opacity(70);
+}
+
+.opacity80 {
+  @include opacity(80);
+}
+
+.opacity90 {
+  @include opacity(90);
+}
+
+.opacity100 {
+  @include opacity(100);
+}
+
+// margin
+@include margin-c(mt, top, 16px);
+
+@each $class, $name in (mlr, (left, right)) (mtb, (top, bottom)) (mt, top) (mb, bottom) (ml, left) (mr, right) {
+  $i: 0;
+
+  @while $i<18 {
+    $n: $i * 10px;
+    @include margin-c($class, $name, $n);
+
+    @if $i<6 {
+      $i: $i + 1;
+    } @else {
+      $i: $i + 2;
+    }
+  }
+}
+
+// padding
+@each $class, $name in (plr, (left, right)) (ptb, (top, bottom)) (pt, top) (pb, bottom) (pl, left) (pr, right) {
+  $i: 0;
+
+  @while $i<18 {
+    $n: $i * 10px;
+    @include padding-c($class, $name, $n);
+
+    @if $i<6 {
+      $i: $i + 1;
+    } @else {
+      $i: $i + 2;
+    }
+  }
+}
+.ptb15 {
+  padding-top: px2rem(15px);
+  padding-bottom: px2rem(15px);
+}
+.pt16 {
+  @include padding(top, 16px);
+}
+
+.pl40-i {
+  @include padding(left, 40px, !important);
+}
+
+// radius
+@include radius-c(4px);
+@include radius-c(8px);
+@include radius-c(15px);
+@include radius-c(20px);
+
+// border
+@include border-c(bd, (left, top, right, bottom), 0px);
+@include border-c(bl, left, 0px);
+@include border-c(bt, top, 0px);
+@include border-c(br, right, 0px);
+@include border-c(bb, bottom, 0px);
+@include border-c(bl, left, 2px);
+@include border-c(bt, top, 2px);
+@include border-c(br, right, 2px);
+@include border-c(bb, bottom, 2px);
+
+// font-size 24-38
+$i: 2;
+
+@while $i<10 {
+  $fn: $i + 10px;
+  @include font-size-c($fn * 2);
+  $i: $i + 1;
+}
+
+@include font-size-c(40px);
+@include font-size-c(44px);
+@include font-size-c(48px);
+@include font-size-c(56px);
+@include font-size-c(68px);
+@include font-size-c(88px);
+
+//z-index
+@include zindex-c(-1);
+$i: 1;
+
+@while $i<7 {
+  @include zindex-c($i * 5);
+  $i: $i + 1;
+}
+
+.fadein {
+  animation: 0.4s fadein;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadein-left {
+  animation: 0.3s fadein-left 0s;
+}
+
+@keyframes fadein-left {
+  0% {
+    left: 100%;
+  }
+
+  50% {
+    left: 50%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+//width
+.w150 {
+  @include width(150px);
+}
+
+//height
+.h-p100 {
+  height: 100%;
+}
+
+.h-l-112 {
+  @include height-line(112px);
+}
+
+.h-l-88 {
+  @include height-line(88px);
+}
+
+.h-l-80 {
+  @include height-line(80px);
+}
+
+//float
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+// 多行行高
+.lh-5 {
+  line-height: 1.5;
+}
+
+//阴影
+.b-shadow-0280 {
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.04);
+}
+
+//bg color
+.c-bg-fff {
+  @include bg-color($color_fff);
+}
+
+.c-bg-gray {
+  @include bg-color($color_bg_gray);
+}
+
+.c-bg-green {
+  @include bg-color($color_green);
+}
+
+.c-bg-orange {
+  @include bg-color($color_orange);
+}
+
+// color
+@include color-c(000, $color_000);
+@include color-c(333, $color_333);
+@include color-c(666, $color_666);
+@include color-c(999, $color_999);
+@include color-c(fff, $color_fff);
+@include color-c(green, $color_green);
+@include color-c(orange, $color_orange);
+@include color-c(black, $color_black);
+@include color-c(gray, $color_gray);
+@include color-c(gray-sm, $color_gray_sm);
+@include color-c(red, $color_red);
+
+.c-green {
+  color: #1bc573;
+}
+.c-ffd883 {
+  color: #ffd883;
+}
+.c-ffc13a {
+  color: #ffc13a;
+}
+.fs16 {
+  font-size: 16px;
+}
+.iconfont {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.2em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+/*新增颜色*/
+@include color-c(C9C9CD, $color_C9C9CD);
+@include color-c(1bc573, $color_1BC573);
+@include color-c(8d8d94, $color_8D8D94);
+
+@include color-c(272a2a, $color_272A2A);
+@include color-c(4d5053, $color_4D5053);
+@include color-c(C0C0C4, $color_C0C0C4);
+
+//bg color
+
+@include bg-color-c(fff, $color_fff);
+@include bg-color-c(orange, $color_orange);
+@include bg-color-c(green, $color_green);
+@include bg-color-c(EBF9F4, $color_EBF9F4);
+@include bg-color-c(gray, $color_bg_gray);
+@include bg-color-c(F7F7F8, $color_F7F7F8);
+@include bg-color-c(FFEEEC, $color_FFEEEC);
+@include bg-color-c(FFF5EE, $color_FFF5EE);
+
+// color
+@include color-c(000, $color_000);
+@include color-c(333, $color_333);
+@include color-c(666, $color_666);
+@include color-c(999, $color_999);
+@include color-c(fff, $color_fff);
+@include color-c(green, $color_green);
+@include color-c(orange, $color_orange);
+@include color-c(black, $color_black);
+@include color-c(gray, $color_gray);
+@include color-c(gray-sm, $color_gray_sm);
+@include color-c(red, $color_red);
+@include color-c(placeholder, $color_placeholder);
+
+@include color-c(272a2a, $color_272A2A);
+@include color-c(4d5053, $color_4D5053);
+@include color-c(A4A4AD, $color_A4A4AD);
+@include color-c(F5F5F5, $color_F5F5F5);
+@include color-c(FAFAFA, $color_FAFAFA);
+@include color-c(FEF3F0, $color_FEF3F0);
+@include color-c(FF533F, $color_FF533F);
+@include color-c(579f7c, $color_579F7C);
+@include color-c(00c27a, $color_00C27A);
+@include color-c(0fb576, $color_0FB576);
+
+/*新增颜色*/
+@include color-c(C9C9CD, $color_C9C9CD);
+@include color-c(1bc573, $color_1BC573);
+@include color-c(8d8d94, $color_8D8D94);
+@include color-c(F7F8F8, $color_F7F8F8);
+
+/*新增边框样式*/
+
+// @include bd-c(C0C0C4, $color_C0C0C4)
+
+// flex
+.ncf-box {
+  display: flex;
+  align-items: center;
+}
+.ncf-box-end {
+  display: flex;
+  align-items: flex-end;
+}
+.ncf-box-start {
+  display: flex;
+  align-items: flex-start;
+}
+.ncf-box-stretch {
+  display: flex;
+  align-items: stretch;
+}
+.ncf-box .item,
+.ncf-box-end .item,
+.ncf-box-start .item,
+.ncf-box-stretch .item {
+  flex: 1;
+}
+.ncf-box .item0,
+.ncf-box-end .item0,
+.ncf-box-start .item0,
+.ncf-box-stretch .item0 {
+  flex: 0;
+}
+
+//新增字体
+.fs10 {
+  font-size: 10px;
+}
+
+@include padding-c(pl, left, 15px);
+@include padding-c(pr, right, 15px);
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-end {
+  display: flex;
+  align-items: flex-end;
+}
+
+.flex-start {
+  display: flex;
+  align-items: flex-start;
+}
+
+.flex-stretch {
+  display: flex;
+  align-items: stretch;
+}
+
+.flex-center .flex1,
+.flex-end .flex1,
+.flex-start .flex1,
+.flex-stretch .flex1 {
+  flex: 1;
+}
+
+.flex-center .flex0,
+.flex-end .flex0,
+.flex-start .flex0,
+.flex-stretch .flex0 {
+  flex: 0;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+.flex-justify-content-space-between {
+  justify-content: space-between;
+}
+
+.flex-direction-row {
+  flex-direction: row;
+}
+.flex-direction-row-reverse {
+  flex-direction: row-reverse;
+}
+.flex-direction-column {
+  flex-direction: column;
+}
+.flex-direction-column-reverse {
+  flex-direction: column-reverse;
+}
+
+.flex-align-items-start {
+  align-items: flex-start;
+}
+
+.center {
+  text-align: center;
+}
+
+@include color-c(FF8125, $color_FF8125);
+.pl0 {
+  padding-left: 0 !important;
+}
+.b-line {
+  position: relative;
+}
+.b-line:before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid #e5e5e5;
+  height: 1px;
+  transform-origin: 0 0;
+  transform: scale(0.5, 0.5);
+  box-sizing: border-box;
+}
+.mb8 {
+  margin-bottom: px2rem(8px);
+}
+.c-000 {
+  color: #000;
+}
+.fs20 {
+  font-size: px2rem(20px);
+}
+.fs22 {
+  font-size: px2rem(22px);
+}
+.fs64 {
+  font-size: px2rem(64px);
+}
+.bd-C0C0C4 {
+  border: 1px solid #c0c0c4;
+}
+.part-line {
+  width: 100%;
+  height: px2rem(16px);
+  background: $color_F7F8F8;
+}
+.m-auto {
+  margin: 0 auto;
+}
+.fs60 {
+  font-size: 30px;
+}
+.c-blue {
+  color: #0091ff;
+}
+.c-f1f3f7 {
+  background: #f1f3f7 !important;
+}

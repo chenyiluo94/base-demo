@@ -1,0 +1,8 @@
+@import 'src/css/variables.scss';
+@import 'src/css/mixin.scss';
+.page-info{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}

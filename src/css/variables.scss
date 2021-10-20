@@ -1,0 +1,67 @@
+
+
+$designWidth: 750;
+$maxWidth:1080px;
+
+@function px2rem($px) {
+  @return $px*320/$designWidth/20px+rem;
+}
+
+@mixin px2rem-name($name, $px) {
+  #{$name}: px2rem($px)
+}
+
+@function rmpx($px) {
+  @return $px/1px;
+}
+
+// colors
+$color_000:#000;
+$color_333:#333;
+$color_666:#666;
+$color_999:#999;
+$color_ccc:#ccc;
+$color_fff:#fff;
+$color_fff8:rgba(255, 255, 255, .8);
+$color_gray:#A4A4AD;
+$color_gray_sm:#C9C9CD;
+$color_placeholder:#C9C9CD;
+$color_line:#F7F8F8;
+$color_bg_gray:#F7F8F8;
+
+$color_black:#272A2A;
+$color_272A2A:#272A2A;
+$color_4D5053:#4D5053;
+$color_A4A4AD:#A4A4AD;
+$color_C9C9CD:#C9C9CD;
+$color_F5F5F5:#F5F5F5;
+$color_FAFAFA:#FAFAFA;
+$color_FEFFFE:#FEFFFE;
+
+$color_red:#FF533F;
+$color_FF533F:#FF533F;
+$color_FFF5EE:#FFF5EE;
+$color_FFEEEC:#FFEEEC;
+$color_FEF3F0:#FEF3F0;
+
+$color_579F7C:#579F7C;
+$color_00C27A:#00C27A;
+$color_green:#0FB576;
+$color_0FB576:#0FB576;
+$color_3BCE8F:#3BCE8F;
+$color_E2F7ED:#E2F7ED;
+$color_EAF9F3:#EAF9F3;
+$color_EBF9F4:#EBF9F4;
+$color_orange:#FF8125;
+$color_FF8125:#FF8125;
+$color_FFA225:#FFA225;
+$color_F7F7F8:#F7F7F8;
+$color_1BC573:#1BC573;
+$color_8D8D94:#8D8D94;
+$color_E5E5E5:#E5E5E5;
+$color_C0C0C4:#C0C0C0;
+$color_F7F8F8:#F7F8F8;
+$color_FF7900:#FF7900;
+
+
+
