@@ -11,7 +11,7 @@ export default class Page404 extends React.PureComponent {
                 <div className="container c-bg-fff">
                     <div className='p404'>
                         <Result
-                            img={this.myImg('https://p2.nicaifu.com/cms/201908/71fdc4159d33abb6642fd02b0cd9e817.jpg')}
+                            img={this.myImg("/image/error.png")}
                             title="页面未找到"
                             message={<div className="mt80"><a className="lnk" href="/">返回首页</a></div>}
                         />

@@ -33,7 +33,6 @@ axios.interceptors.response.use(
     (response) => {
         return { ...response.data }
     }, (error) => {
-        // 可加入登录超时等的判断 https://xiaozhuanlan.com/topic/8295076341
         try {
             if (error && error.response) {
                 switch (error.response.status) {
